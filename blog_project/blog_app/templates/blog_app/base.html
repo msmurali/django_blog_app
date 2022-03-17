@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Blog app">
+    <meta name="keywords" content="blog app blogs blogging content blogger">
+    <title>{% block title %} {% endblock title %}</title>
+    <style type="text/tailwindcss">
+        @layer components {
+      .nav-link {
+          @apply inline-block text-white no-underline hover:text-gray-900 hover:underline py-2 px-4  font-medium;
+      }
+    }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'body': [
+                            "Inter var",
+                            "ui-sans-serif",
+                            "system-ui",
+                            "-apple-system",
+                            "BlinkMacSystemFont",
+                            "Segoe UI", "Roboto",
+                            "Helvetica Neue",
+                            "Arial",
+                            "Noto Sans",
+                            "sans-serif",
+                            "Apple Color Emoji",
+                            "Segoe UI Emoji",
+                            "Segoe UI Symbol",
+                            "Noto Color Emoji",
+                        ],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="font-body">
+    <nav id="header" class="w-full z-10 top-0 bg-white bg-blue-500 shadow-lg">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-4">
+            <div class="pl-4 flex items-center">
+                <a class="text-white text-base no-underline hover:no-underline font-bold text-2xl" href={%
+                    url "blog-home" %}>
+                    Blog
+                </a>
+            </div>
+            <div class="block lg:hidden pr-4">
+                <button id="nav-toggle"
+                    class="flex items-center px-3 py-2 border rounded text-gray-500 border-white hover:text-gray-900 appearance-none focus:outline-none">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" stroke="white" fill="white" />
+                    </svg>
+                </button>
+            </div>
+            <div class="w-full flex-grow lg:flex  lg:content-center lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 z-20"
+                id="nav-content">
+                <ul class="list-reset lg:flex justify-end items-center ml-auto">
+                    <li class="mr-3 py-2 lg:py-0">
+                        <a class="nav-link" href={% url "blog-home" %}>Home</a>
+                    </li>
+                    <li class="mr-3 py-2 lg:py-0">
+                        <a class="nav-link" href={% url "blog-about" %}>About</a>
+                    </li>
+                    <li class="mr-3 py-2 lg:py-0">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="mr-3 py-2 lg:py-0">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container mx-auto">
+        {% block body %} {% endblock %}
+    </main>
+</body>
+<script>
+    /*Toggle dropdown list*/
+
+    var navMenuDiv = document.getElementById("nav-content");
+    var navMenu = document.getElementById("nav-toggle");
+
+    var helpMenuDiv = document.getElementById("menu-content");
+    var helpMenu = document.getElementById("menu-toggle");
+
+    document.onclick = check;
+
+    function check(e) {
+        var target = (e && e.target) || (event && event.srcElement);
+
+
+        //Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, navMenu)) {
+                // click on the link
+                if (navMenuDiv.classList.contains("hidden")) {
+                    navMenuDiv.classList.remove("hidden");
+                } else { navMenuDiv.classList.add("hidden"); }
+            } else {
+                // click both outside link and outside menu, hide menu
+                navMenuDiv.classList.add("hidden");
+            }
+        }
+
+        //Help Menu
+        if (!checkParent(target, helpMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, helpMenu)) {
+                // click on the link
+                if (helpMenuDiv.classList.contains("hidden")) {
+                    helpMenuDiv.classList.remove("hidden");
+                } else { helpMenuDiv.classList.add("hidden"); }
+            } else {
+                // click both outside link and outside menu, hide menu
+                helpMenuDiv.classList.add("hidden");
+            }
+        }
+
+    }
+
+    function checkParent(t, elm) {
+        while (t.parentNode) {
+            if (t == elm) { return true; }
+            t = t.parentNode;
+        }
+        return false;
+    }
+
+
+</script>
+
+</html>
