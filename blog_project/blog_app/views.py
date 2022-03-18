@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Post
 
 def home(req):
-    return render(req, 'blog_app/home.html')
+    context = {'posts' : Post.objects.all()}
+    return render(req, 'blog_app/home.html', context)
 
 def about(req):
     return render(req, 'blog_app/about.html')
