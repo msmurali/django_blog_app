@@ -13,6 +13,15 @@
           @apply inline-block text-white no-underline hover:text-gray-900 hover:underline py-2 px-4  font-medium;
       }
     }
+    @layer utilities {
+        input[type='text'], input[type='password']{
+            background-color: rgb(243 244 246);  
+            padding: 0.2em 1em;
+            margin: 1em;
+            border-radius: 6px;
+            border: 1.4px solid rgb(156 163 175);      
+        }
+    }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -74,7 +83,7 @@
                         <a class="nav-link" href="#">Login</a>
                     </li>
                     <li class="mr-3 py-2 lg:py-0">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href={% url "register" %}>Register</a>
                     </li>
                 </ul>
             </div>

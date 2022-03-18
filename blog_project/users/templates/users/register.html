@@ -1,0 +1,20 @@
+{% extends 'blog_app/base.html' %}
+{% block title %}
+Register
+{% endblock %}
+{% block body %}
+<div class="container p-4">
+    <form action="POST">
+        {% csrf_token %}
+        <fieldset class="font-body leading-loose">
+            <legend class="font-body text-2xl font-medium py-4">Register</legend>
+            {{ form.as_p }}
+        </fieldset>
+        <button type="submit"
+            class="px-6 py-1 rounded text-white font-medium font-body text-xl bg-blue-500 shadow-lg active:shadow">Register</button>
+    </form>
+    <p class="py-4">Already have an account?
+        <a href="#" class="text-blue-700">Sign in</a>
+    </p>
+</div>
+{% endblock %}
