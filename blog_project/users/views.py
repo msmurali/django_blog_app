@@ -5,6 +5,7 @@ def register(req):
     if(req.method == 'POST'):
         form = UserCreationForm(req.POST)
         if form.is_valid():
+            form.save()
             return redirect('blog-home')
     else:
         form = UserCreationForm()

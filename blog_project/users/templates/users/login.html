@@ -1,11 +1,11 @@
 {% extends 'blog_app/base.html' %}
 {% load tailwind_filters %}
 {% block title %}
-Register
+Login
 {% endblock %}
 {% block body %}
 <div class="flex bg-yello-100">
-    <div class="p-6 flex flex-col justify-between h-screen w-full md:w-1/2 mx-auto">
+    <div class="p-4 flex flex-col justify-between h-screen w-full md:w-1/2 mx-auto">
         <h1 class="font-bold font-poppins text-2xl py-4">Blog</h1>
         <div>
             <form method="POST">
@@ -16,15 +16,15 @@ Register
                 <button type="submit"
                     class="my-4 px-6 py-2 rounded text-white font-normal font-poppins text-md bg-blue-800 shadow-lg active:shadow">Register</button>
             </form>
-            <p class="py-4 font-body text-sm text-gray-700">Already have an account?
-                <a href={% url "login" %} class="text-blue-900 font-body underline"> sign in</a>
+            <p class="py-4 font-body text-sm text-gray-700">Don't have an account?
+                <a href={% url "register" %} class="text-blue-900 font-body underline"> sign up</a>
             </p>
         </div>
     </div>
     <div class="w-1/2 hidden md:block">
         <img class="w-full h-screen object-cover"
-            src="https://c.pxhere.com/photos/e0/95/rottweiler_puppy_dog_background_thoroughbred_animal_white_black-705570.jpg!d"
-            alt="railtracks-bg">
+            src="https://cdn.mwallpapers.com/photos/celebrities/aesthetic/esther-lee-on-november-wallpaper-nature-landscape-android-iphone-hd-wallpaper-background-downloadhd-wallpapers-desktop-background-android-iphone-1080p-4k-hcmb3.jpg"
+            alt="background">
     </div>
 </div>
 {% endblock %}
