@@ -1,0 +1,22 @@
+{% extends 'blog_app/base.html' %}
+{% load tailwind_filters %}
+{% block title %}
+Logged out
+{% endblock %}
+{% block body %}
+<div class="flex bg-yello-100">
+    <div class="p-6 flex flex-col justify-between h-screen w-full md:w-1/2 mx-auto">
+        <h1 class="font-bold font-poppins text-2xl py-4">Blog</h1>
+        <div class="grid items-center h-full">
+            <p class="py-4 font-body text-2xl font-medium text-gray-700">You have been logged out.
+                <a href={% url "login" %} class="text-blue-900 font-body underline"> Log in</a> again
+            </p>
+        </div>
+    </div>
+    <div class="w-1/2 hidden md:block">
+        <img class="w-full h-screen object-cover"
+            src="https://c.pxhere.com/photos/e0/95/rottweiler_puppy_dog_background_thoroughbred_animal_white_black-705570.jpg!d"
+            alt="railtracks-bg">
+    </div>
+</div>
+{% endblock %}

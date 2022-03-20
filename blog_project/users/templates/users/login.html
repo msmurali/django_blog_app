@@ -5,20 +5,23 @@ Login
 {% endblock %}
 {% block body %}
 <div class="flex bg-yello-100">
-    <div class="p-4 flex flex-col justify-between h-screen w-full md:w-1/2 mx-auto">
+    <div class="p-6 flex flex-col h-screen w-full md:w-1/2 mx-auto">
         <h1 class="font-bold font-poppins text-2xl py-4">Blog</h1>
-        <div>
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset class="font-body">
-                    {{ form|crispy }}
-                </fieldset>
-                <button type="submit"
-                    class="my-4 px-6 py-2 rounded text-white font-normal font-poppins text-md bg-blue-800 shadow-lg active:shadow">Register</button>
-            </form>
-            <p class="py-4 font-body text-sm text-gray-700">Don't have an account?
-                <a href={% url "register" %} class="text-blue-900 font-body underline"> sign up</a>
-            </p>
+        <div class="h-full grid items-center">
+            <div>
+                <form method="POST">
+                    {% csrf_token %}
+                    <fieldset class="font-body">
+                        {{ form|crispy }}
+                    </fieldset>
+                    <button type="submit"
+                        class="my-4 px-6 py-2 rounded text-white font-normal font-poppins text-md bg-blue-800 shadow-lg active:shadow">Log
+                        in</button>
+                </form>
+                <p class="py-4 font-body text-sm text-gray-700">Don't have an account?
+                    <a href={% url "register" %} class="text-blue-900 font-body underline"> sign up</a>
+                </p>
+            </div>
         </div>
     </div>
     <div class="w-1/2 hidden md:block">
