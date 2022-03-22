@@ -1,11 +1,7 @@
 {% extends 'blog_app/base.html' %} {% load tailwind_filters %} {% block title %}
 Profile {% endblock %} {% block body %}
 <div class="container m-auto flex justify-center items-center pt-4">
-  <img
-    src="{{ user.profile.image.url }}"
-    alt="profile-picture"
-    class="w-24 h-24 rounded-full"
-  />
+  <img src="{{ user.profile.image.url }}" alt="profile-picture" class="w-24 h-24 rounded-full" />
   <div class="w-full ml-6">
     <h1 class="font-body font-medium text-2xl py-4">
       {{ user.username|title }}
@@ -18,9 +14,7 @@ Profile {% endblock %} {% block body %}
   <fieldset class="font-body">
     {{ user_update_form|crispy }} {{ profile_update_form|crispy }}
   </fieldset>
-  <button
-    type="submit"
-    class="
+  <button type="submit" class="
       my-8
       px-6
       py-2
@@ -31,8 +25,7 @@ Profile {% endblock %} {% block body %}
       bg-blue-800
       shadow-lg
       active:shadow
-    "
-  >
+    ">
     Update
   </button>
 </form>

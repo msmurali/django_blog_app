@@ -1,22 +1,38 @@
 {% extends "blog_app/base.html" %} {% block title %} Blog {% endblock title %}
 {% block body %}
-<h1 class="font-bold text-2xl px-4 py-8 m-auto container w-full md:w-3/4">Posts</h1>
+<h1 class="font-bold text-2xl px-4 py-8 m-auto container w-full md:w-3/4">
+  Posts
+</h1>
 {% for post in posts %}
-<article class="container m-auto flex items-center w-full md:w-3/4 bg-blue-50 p-6 rounded-lg">
-  <img src="../../../media/default.jpg" alt="avatar" class="rounded-full w-24 h-24 md:w-36 md:h-36">
+<article
+  class="
+    container
+    m-auto
+    flex
+    items-center
+    w-full
+    md:w-3/4
+    bg-blue-50
+    p-6
+    rounded-lg
+  "
+>
+  <img
+    src="{{ post.author.profile.image.url }}"
+    alt="avatar"
+    class="rounded-full w-24 h-24 md:w-36 md:h-36"
+  />
   <div class="w-full ml-6">
-    <h1 class="font-medium font-poppins text-xl md:text-2xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+    <h1 class="font-medium font-poppins text-xl md:text-2xl">
+      <a href={% url  'post-detail' post.id %}>{{ post.title }}</a>
     </h1>
     <div class="w-full flex justify-between py-6">
-      <p class="font-body font-medium text-sm">Muralikrishnan MS</p>
-      <p class="font-body font-medium text-sm">24 Aug 2022</p>
+      <p class="font-body font-medium text-sm">{{ post.author }}</p>
+      <p class="font-body font-medium text-sm">
+        {{ post.date_posted|date:"F d, Y" }}
+      </p>
     </div>
-    <p class="w-full font-poppins">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores perspiciatis aliquam, ea, maiores cum placeat
-      dolorem magnam soluta quidem voluptate, beatae repellat vitae. Quam repudiandae dolor quos, reiciendis assumenda
-      ea.
-    </p>
+    <p class="w-full font-poppins">{{ post.content }}</p>
   </div>
 </article>
-{% endfor %}
-{% endblock %}
+{% endfor %} {% endblock %}
