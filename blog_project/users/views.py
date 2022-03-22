@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserUpdationForm, ProfileUpdationForm
 
 
 def register(req):
@@ -15,4 +15,32 @@ def register(req):
 
 
 def profile(req):
-    return render(req, 'users/profile.html')
+    if(req.method == 'POST'):
+        user_update_form = UserUpdationForm(
+            req.POST,
+            req.FILES,
+            instance=req.user)
+
+        profile_update_form = ProfileUpdationForm(
+            req.POST,
+            req.FILES,
+            instance=req.user.profile)
+
+        if (user_update_form.is_valid() and profile_update_form.is_valid()):
+            user_update_form.save()
+            profile_update_form.save()
+        return redirect('profile')
+
+    else:
+        user_update_form = UserUpdationForm(
+            instance=req.user
+        )
+        profile_update_form = ProfileUpdationForm(
+            instance=req.user.profile
+        )
+
+        context = {
+            'user_update_form': user_update_form,
+            'profile_update_form': profile_update_form,
+        }
+        return render(req, 'users/profile.html', context)
