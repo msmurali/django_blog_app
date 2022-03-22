@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .forms import UserRegistrationForm, UserUpdationForm, ProfileUpdationForm
+from django.contrib.auth.decorators import login_required
 
 
 def register(req):
@@ -14,6 +15,7 @@ def register(req):
     return render(req, 'users/register.html', context)
 
 
+@login_required
 def profile(req):
     if(req.method == 'POST'):
         user_update_form = UserUpdationForm(
