@@ -1,10 +1,10 @@
 {% extends 'blog_app/base.html' %} {% load tailwind_filters %} {% block title %}
-Create/Update Post {% endblock %} {% block body %}
+Delete Post {% endblock %} {% block body %}
 <div class="flex">
   <div
     class="px-6 flex flex-col justify-evenly h-screen w-full md:w-1/2 mx-auto"
   >
-    <h1 class="px-4 font-poppins font-medium text-2xl">Create Blog Post</h1>
+    <h1 class="px-4 font-poppins font-medium text-2xl">Delete Blog Post</h1>
     <div>
       <form method="POST">
         {% csrf_token %}
@@ -19,12 +19,12 @@ Create/Update Post {% endblock %} {% block body %}
             text-white
             font-normal font-poppins
             text-md
-            bg-blue-800
+            bg-red-800
             shadow-lg
             active:shadow
           "
         >
-          Post
+          Delete
         </button>
       </form>
     </div>
