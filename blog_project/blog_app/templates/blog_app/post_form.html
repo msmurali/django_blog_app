@@ -1,0 +1,40 @@
+{% extends 'blog_app/base.html' %} {% load tailwind_filters %} {% block title %}
+Create Post {% endblock %} {% block body %}
+<div class="flex">
+  <div
+    class="px-6 flex flex-col justify-evenly h-screen w-full md:w-1/2 mx-auto"
+  >
+    <h1 class="px-4 font-poppins font-medium text-2xl">Create Blog Post</h1>
+    <div>
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="font-body">{{ form|crispy }}</fieldset>
+        <button
+          type="submit"
+          class="
+            my-4
+            px-6
+            py-2
+            rounded
+            text-white
+            font-normal font-poppins
+            text-md
+            bg-blue-800
+            shadow-lg
+            active:shadow
+          "
+        >
+          Create
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="w-1/2 h-screen hidden md:block">
+    <img
+      class="w-full h-full object-cover"
+      src="https://c.pxhere.com/photos/e0/95/rottweiler_puppy_dog_background_thoroughbred_animal_white_black-705570.jpg!d"
+      alt="railtracks-bg"
+    />
+  </div>
+</div>
+{% endblock %}
